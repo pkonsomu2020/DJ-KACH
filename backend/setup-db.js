@@ -59,6 +59,23 @@ const setupDatabase = async () => {
     `);
     console.log('Bookings table created or already exists');
     
+    // Create rsvps table
+    await connection.promise().query(`
+      CREATE TABLE IF NOT EXISTS rsvps (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        first_name VARCHAR(255) NOT NULL,
+        last_name VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL,
+        phone VARCHAR(50),
+        how_heard VARCHAR(100),
+        attending_with VARCHAR(100),
+        expectations TEXT,
+        prayer_followup VARCHAR(10),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+    console.log('RSVPs table created or already exists');
+    
     console.log('Database setup completed successfully!');
   } catch (error) {
     console.error('Error setting up database:', error);

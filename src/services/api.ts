@@ -20,6 +20,17 @@ export interface BookingForm {
   message?: string;
 }
 
+export interface RSVPForm {
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone?: string;
+  how_heard?: string;
+  attending_with?: string;
+  expectations?: string;
+  prayer_followup?: string;
+}
+
 class ApiService {
   private async request<T>(endpoint: string, options?: RequestInit): Promise<T> {
     const url = `${API_BASE_URL}${endpoint}`;
@@ -67,6 +78,14 @@ class ApiService {
   // Get all bookings
   async getBookings(): Promise<BookingForm[]> {
     return this.request('/bookings');
+  }
+
+  // RSVP form
+  async submitRSVPForm(form: RSVPForm): Promise<{ id: number; message: string }> {
+    return this.request('/rsvp', {
+      method: 'POST',
+      body: JSON.stringify(form),
+    });
   }
 }
 

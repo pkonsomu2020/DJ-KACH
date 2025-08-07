@@ -153,58 +153,53 @@ const Services = () => {
   };
 
   return (
-    <div className="pt-20">
+    <div className="pt-16 sm:pt-20">
       {/* Hero Section */}
-      <section className="relative py-20">
-        <img src="/banner_img.jpg" alt="Banner" className="absolute inset-0 w-full h-full object-cover z-0" />
+      <section className="relative py-10 sm:py-20">
+        <img src="/banner_img.jpg" alt="Banner" className="absolute inset-0 w-full h-48 sm:h-full object-cover z-0" />
         <div className="absolute inset-0 bg-gradient-to-br from-red-900 to-transparent opacity-90 z-10"></div>
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
+        <div className="relative z-20 max-w-2xl sm:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-2xl sm:text-6xl font-bold text-white mb-4 sm:mb-6">
             Our Services
           </h1>
-          <p className="text-xl text-gray-100 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-100 max-w-xl sm:max-w-3xl mx-auto">
             Professional DJ services tailored to create memorable experiences for every occasion
           </p>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      <section className="py-10 sm:py-20 bg-white">
+        <div className="max-w-2xl sm:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-16">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group border"
+                className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group border flex flex-col h-full"
               >
-                <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <service.icon className="w-8 h-8 text-white" />
+                <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                 </div>
-
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-4">
                   {service.title}
                 </h3>
-
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-gray-600 mb-4 leading-relaxed">
                   {service.description}
                 </p>
-
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-2 mb-4 sm:mb-6">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center text-gray-700">
-                      <CheckCircle className="w-4 h-4 text-red-500 mr-3" />
+                      <CheckCircle className="w-4 h-4 text-red-500 mr-2 sm:mr-3" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-
-                {/* Remove price from service card */}
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mt-auto">
                   <span></span>
                   <button
                     type="button"
                     onClick={() => handleBookNow(service.title)}
-                    className={`bg-gradient-to-r ${service.color} text-white px-6 py-2 rounded-full font-semibold hover:scale-105 transform transition-all duration-200`}
+                    className={`bg-gradient-to-r ${service.color} text-white px-4 sm:px-6 py-2 rounded-full font-semibold hover:scale-105 transform transition-all duration-200 w-full sm:w-auto`}
                   >
                     Book Now
                   </button>
@@ -215,20 +210,20 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Booking Form Section (duplicated from Contact page) */}
-      <section ref={formRef} className="py-20 bg-gray-50">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl p-8 shadow-lg border">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Book Your Event</h2>
+      {/* Booking Form Section */}
+      <section ref={formRef} className="py-10 sm:py-20 bg-gray-50">
+        <div className="max-w-xl sm:max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border">
+            <h2 className="text-xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Book Your Event</h2>
             {isSubmitted ? (
-              <div className="text-center py-12">
-                <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
+              <div className="text-center py-8 sm:py-12">
+                <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-500 mx-auto mb-4" />
+                <h3 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
                 <p className="text-gray-600">Your inquiry has been sent. We'll get back to you within 24 hours.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                       Your Name *
@@ -260,7 +255,7 @@ const Services = () => {
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                       Phone Number
@@ -290,7 +285,7 @@ const Services = () => {
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label htmlFor="event_type" className="block text-sm font-medium text-gray-700 mb-2">
                       Event Type *
@@ -354,7 +349,7 @@ const Services = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-4 rounded-lg font-semibold text-lg hover:scale-105 transform transition-all duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:scale-105 transform transition-all duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {isSubmitting ? (
                     <div className="flex items-center justify-center">
@@ -378,15 +373,15 @@ const Services = () => {
       {/* The entire Service Packages section has been removed as requested. */}
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-red-600 to-red-700">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-white mb-6">
+      <section className="py-10 sm:py-20 bg-gradient-to-r from-red-600 to-red-700">
+        <div className="max-w-2xl sm:max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4 sm:mb-6">
             Need a Custom Package?
           </h2>
-          <p className="text-xl text-red-100 mb-8">
+          <p className="text-base sm:text-xl text-red-100 mb-6 sm:mb-8">
             We're here to help create the perfect solution for your event
           </p>
-          <button className="bg-white text-red-600 px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transform transition-all duration-200 shadow-lg">
+          <button className="bg-white text-red-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:scale-105 transform transition-all duration-200 shadow-lg">
             Request Custom Quote
           </button>
         </div>

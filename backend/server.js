@@ -84,6 +84,19 @@ app.get('/api/bookings', (req, res) => {
   });
 });
 
+// RSVP - Event RSVP form
+app.post('/api/rsvp', (req, res) => {
+  const { first_name, last_name, email, phone, how_heard, attending_with, expectations, prayer_followup } = req.body;
+  const query = 'INSERT INTO rsvps (first_name, last_name, email, phone, how_heard, attending_with, expectations, prayer_followup) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+  db.query(query, [first_name, last_name, email, phone, how_heard, attending_with, expectations, prayer_followup], (err, result) => {
+    if (err) {
+      console.error('Error submitting RSVP:', err);
+      return res.status(500).json({ error: 'Database error' });
+    }
+    res.status(201).json({ id: result.insertId, message: 'RSVP submitted successfully' });
+  });
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);

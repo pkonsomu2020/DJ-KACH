@@ -8,6 +8,7 @@ import Services from './pages/Services';
 import Events from './pages/Events';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
+import EventDetails from './pages/EventDetails';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/events/:id" element={<EventDetails />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

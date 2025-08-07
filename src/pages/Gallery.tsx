@@ -122,7 +122,7 @@ const Gallery = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <div className="pt-16 sm:pt-20">
       {/* Hero Section */}
       <section className="relative py-20">
         <img src="/banner_img.jpg" alt="Banner" className="absolute inset-0 w-full h-full object-cover z-0" />
@@ -138,12 +138,11 @@ const Gallery = () => {
       </section>
 
       {/* Photo Gallery */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-10 sm:py-20 bg-white">
+        <div className="max-w-2xl sm:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Filter */}
-          <div className="flex flex-col md:flex-row justify-between items-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6 md:mb-0">Photo Gallery</h2>
-            
+          <div className="flex flex-col md:flex-row justify-between items-center mb-8 sm:mb-12 gap-4">
+            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 md:mb-0">Photo Gallery</h2>
             <div className="flex items-center space-x-2">
               <Filter className="w-5 h-5 text-gray-600" />
               <select
@@ -159,32 +158,19 @@ const Gallery = () => {
           </div>
 
           {/* Media Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
-            {filteredItems.map((item, index) => (
-              <div
-                key={index}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-                onClick={() => setSelectedMedia(item)}
-              >
-                <div className="aspect-w-4 aspect-h-3 relative">
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-3">
-                      <Image className="w-6 h-6 text-red-600" />
-                    </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
+            {filteredItems.map((media, idx) => (
+              <div key={idx} className="rounded-2xl overflow-hidden shadow-lg bg-white flex flex-col">
+                <img
+                  src={media.src}
+                  alt={media.alt}
+                  className="w-full h-40 sm:h-56 object-cover"
+                />
+                <div className="p-3 sm:p-4 text-center flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-1">{media.title}</h3>
+                    <p className="text-xs sm:text-sm text-gray-600 mb-2">{media.alt}</p>
                   </div>
-                </div>
-
-                <div className="p-4">
-                  <h3 className="font-semibold text-gray-900 truncate">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.category}</p>
                 </div>
               </div>
             ))}

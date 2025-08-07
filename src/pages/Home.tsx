@@ -74,7 +74,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="pt-16 sm:pt-20">
+    <div className="pt-16 sm:pt-20 px-0 sm:px-4">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] sm:min-h-screen flex flex-col items-center justify-center overflow-hidden">
         {/* Fullscreen Image Slider Background */}

@@ -66,8 +66,8 @@ const EventDetails = () => {
   };
 
   return (
-    <div className="pt-16 sm:pt-20 bg-gray-50 min-h-screen">
-      <div className="max-w-5xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="pt-16 sm:pt-20 bg-gray-50 min-h-screen px-0 sm:px-4">
+      <div className="max-w-5xl mx-auto px-0 sm:px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Event Info */}
         <div className="md:col-span-2">
           <h1 className="text-2xl sm:text-4xl font-bold text-red-600 mb-4">{event.title}</h1>
@@ -102,7 +102,7 @@ const EventDetails = () => {
           </blockquote>
         </div>
         {/* RSVP Sidebar */}
-        <div className="w-full max-w-md mx-auto bg-white rounded-2xl shadow-lg p-6 border h-fit">
+        <div className="w-full md:max-w-md mx-auto bg-white rounded-2xl shadow-lg p-6 border h-fit">
           <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">RSVP</h2>
           {isSubmitted ? (
             <div className="text-center py-8">

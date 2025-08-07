@@ -93,7 +93,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className="pt-16 sm:pt-20">
+    <div className="pt-16 sm:pt-20 px-0 sm:px-4">
       {/* Hero Section */}
       <section className="relative py-10 sm:py-20">
         <img src="/banner_img.jpg" alt="Banner" className="absolute inset-0 w-full h-48 sm:h-full object-cover z-0" />

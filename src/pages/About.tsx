@@ -35,28 +35,17 @@ const About = () => {
 
   return (
     <div className="pt-16 sm:pt-20 px-0 sm:px-4">
+      {/* Banner Section */}
       <section className="relative py-10 sm:py-20">
-        <div className="max-w-2xl sm:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-2xl sm:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
+        <img src="/banner_img.jpg" alt="Banner" className="absolute inset-0 w-full h-48 sm:h-full object-cover z-0" />
+        <div className="absolute inset-0 bg-gradient-to-br from-red-900 to-transparent opacity-90 z-10"></div>
+        <div className="relative z-20 max-w-2xl sm:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-2xl sm:text-5xl font-bold text-white mb-4 sm:mb-6">
             About DJ <span className="text-red-600">Kach</span>
           </h1>
-          <p className="text-base sm:text-xl text-gray-700 mb-6 sm:mb-8">
+          <p className="text-base sm:text-xl text-gray-100 mb-6 sm:mb-8">
             A passionate gospel music minister dedicated to spreading joy and inspiration through music
           </p>
-        </div>
-        <div className="flex flex-col items-center justify-center gap-6 sm:gap-10 max-w-2xl sm:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <img
-            src="/dj_kach_photo.jpg"
-            alt="DJ Kach"
-            className="rounded-2xl shadow-lg w-full max-w-xs sm:max-w-md h-48 sm:h-72 object-cover"
-            style={{ display: 'block' }}
-          />
-          <div className="text-center">
-            <h2 className="text-lg sm:text-2xl font-semibold text-gray-900 mb-2">Our Mission</h2>
-            <p className="text-base sm:text-lg text-gray-700 mb-4">
-              To bring the joy of gospel music to every celebration and uplift spirits through professional DJ services.
-            </p>
-          </div>
         </div>
       </section>
 

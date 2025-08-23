@@ -7,83 +7,83 @@ const Events = () => {
 
   const upcomingEvents = [
     {
-      date: '2024-02-15',
-      title: 'Grace Community Wedding',
-      venue: 'Riverside Chapel',
-      location: 'Downtown',
-      time: '4:00 PM - 11:00 PM',
-      attendees: 150,
-      type: 'Wedding',
-      image: 'https://images.pexels.com/photos/1779447/pexels-photo-1779447.jpeg?auto=compress&cs=tinysrgb&w=800',
-      status: 'Available'
-    },
-    {
-      date: '2024-02-22',
-      title: 'Youth Conference 2024',
-      venue: 'Faith Center Auditorium',
-      location: 'Eastside',
-      time: '6:00 PM - 10:00 PM',
-      attendees: 300,
-      type: 'Conference',
-      image: 'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800',
-      status: 'Available'
-    },
-    {
-      date: '2024-03-01',
-      title: 'Corporate Appreciation Night',
-      venue: 'Grand Ballroom',
-      location: 'City Center',
-      time: '7:00 PM - 12:00 AM',
+      date: '2024-11-26',
+      title: 'Amefanya Makuu – Thanksgiving Album Launch',
+      venue: 'CITAM Thika Road',
+      location: 'Thika Road',
+      time: 'TBA',
       attendees: 200,
-      type: 'Corporate',
-      image: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=800',
+      type: 'Album Launch',
+      image: '/EVENTS/Amefanya-Makuu_Poster.jpg',
       status: 'Available'
     },
     {
-      date: '2024-03-08',
-      title: 'Spring Gospel Festival',
-      venue: 'Community Park',
-      location: 'Westside',
-      time: '2:00 PM - 8:00 PM',
+      date: '2022-10-29',
+      title: 'BREAKOUT Dj Praise Experience Vol 10',
+      venue: 'Barizi Resort, Along Gataka Road',
+      location: 'Gataka Road',
+      time: '6pm – 10pm',
+      attendees: 150,
+      type: 'Gospel Experience',
+      image: '/EVENTS/Breakout-Praise_Poster.jpg',
+      status: 'Past Event'
+    },
+    {
+      date: '2025-01-18',
+      title: 'The Call Show',
+      venue: 'MMU Radio 99.9 FM / KBR Radio 254',
+      location: 'Radio Broadcast',
+      time: '7pm – 10pm',
+      attendees: 1000,
+      type: 'Radio Show',
+      image: '/EVENTS/Call-show_Poster.jpg',
+      status: 'Available'
+    },
+    {
+      date: '2024-10-27',
+      title: 'Hour of Worship',
+      venue: 'See Light International Ministries, Along Magadi Road',
+      location: 'Magadi Road',
+      time: '2pm – 4pm',
+      attendees: 300,
+      type: 'Worship Service',
+      image: '/EVENTS/hour_of_worship poster.jpg',
+      status: 'Available'
+    },
+    {
+      date: '2023-12-29',
+      title: 'FEMA 2023 Award',
+      venue: 'KICC, Nairobi',
+      location: 'Nairobi',
+      time: 'TBA',
       attendees: 500,
-      type: 'Festival',
-      image: 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=800',
-      status: 'Available'
+      type: 'Award Ceremony',
+      image: '/EVENTS/Fema_2023 Poster.jpg',
+      status: 'Past Event'
     },
     {
-      date: '2024-03-15',
-      title: 'Church Anniversary Celebration',
-      venue: 'New Life Church',
-      location: 'Northside',
-      time: '5:00 PM - 9:00 PM',
-      attendees: 250,
-      type: 'Church',
-      image: 'https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=800',
-      status: 'Available'
-    },
-    {
-      date: '2024-03-22',
-      title: 'Golden Anniversary Party',
-      venue: 'Heritage Hall',
-      location: 'Southside',
-      time: '6:00 PM - 11:00 PM',
-      attendees: 100,
-      type: 'Wedding',
-      image: 'https://images.pexels.com/photos/1375849/pexels-photo-1375849.jpeg?auto=compress&cs=tinysrgb&w=800',
+      date: '2025-08-23',
+      title: 'Jikubali Afrifest 2nd Edition – Nairobi',
+      venue: 'Focus Center, Kasarani',
+      location: 'Kasarani',
+      time: 'TBA',
+      attendees: 400,
+      type: 'African Festival',
+      image: '/EVENTS/Jikubali Afrifest_Poster.jpg',
       status: 'Available'
     }
   ];
 
   const pastEvents = [
-    'New Year Gospel Celebration 2024 - 800+ attendees',
-    'Christmas Joy Concert 2023 - 600+ attendees',
-    'Annual Church Anniversary - 400+ attendees',
-    'Summer Youth Camp - 300+ attendees',
-    'Wedding Season 2023 - 25+ Events',
-    'Corporate Holiday Parties - 15+ Events'
+    'FEMA 2023 Award - 500+ attendees',
+    'BREAKOUT Dj Praise Experience Vol 10 - 150+ attendees',
+    'Previous Album Launches - 200+ attendees',
+    'Radio Shows - 1000+ listeners',
+    'Worship Services - 300+ attendees',
+    'Gospel Events - 250+ attendees'
   ];
 
-  const eventTypes = ['All', 'Wedding', 'Church', 'Corporate', 'Conference', 'Festival'];
+  const eventTypes = ['All', 'Album Launch', 'Gospel Experience', 'Radio Show', 'Worship Service', 'Award Ceremony', 'African Festival'];
 
   const filteredEvents = activeFilter === 'All' 
     ? upcomingEvents 
@@ -91,13 +91,14 @@ const Events = () => {
 
   const getEventTypeColor = (type: string) => {
     const colors = {
-      Wedding: 'from-red-500 to-red-600',
-      Conference: 'from-gray-600 to-gray-700',
-      Corporate: 'from-gray-700 to-gray-800',
-      Festival: 'from-red-600 to-red-700',
-      Church: 'from-red-500 to-red-700'
+      'Album Launch': 'from-red-500 to-red-600',
+      'Gospel Experience': 'from-red-600 to-red-700',
+      'Radio Show': 'from-red-500 to-red-700',
+      'Worship Service': 'from-red-500 to-red-600',
+      'Award Ceremony': 'from-red-600 to-red-800',
+      'African Festival': 'from-red-500 to-red-700'
     };
-    return colors[type as keyof typeof colors] || 'from-gray-500 to-gray-700';
+    return colors[type as keyof typeof colors] || 'from-red-500 to-red-700';
   };
 
   const getStatusColor = (status: string) => {
@@ -124,7 +125,7 @@ const Events = () => {
       <section className="py-10 sm:py-20 bg-white">
         <div className="max-w-2xl sm:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center mb-8 sm:mb-12 gap-4">
-            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 md:mb-0">Upcoming Events</h2>
+            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 md:mb-0">Events</h2>
             {/* Filter */}
             <div className="flex items-center space-x-2">
               <Filter className="w-5 h-5 text-gray-600" />
@@ -192,7 +193,7 @@ const Events = () => {
                     }`}
                     disabled={event.status !== 'Available'}
                   >
-                    {event.status === 'Available' ? 'RSVP WITH US' : 'Fully Booked'}
+                    {event.status === 'Available' ? 'RSVP WITH US' : 'Past Event'}
                   </button>
                 </div>
               </Link>

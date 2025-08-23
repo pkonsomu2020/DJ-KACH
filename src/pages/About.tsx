@@ -6,7 +6,7 @@ const About = () => {
     { icon: Music, number: '500+', label: 'Events Played' },
     { icon: Heart, number: '1000+', label: 'Happy Clients' },
     { icon: Users, number: '50K+', label: 'People Entertained' },
-    { icon: Award, number: '8+', label: 'Years Experience' },
+    { icon: Award, number: '15+', label: 'Years Experience' },
   ];
 
   const skills = [
@@ -73,7 +73,7 @@ const About = () => {
                 Spreading Joy Through Gospel Music
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                With over 8 years of experience in the music industry, DJ Kach has become 
+                With over 15 years of experience in the music industry, DJ Kach has become 
                 one of the most sought-after gospel DJs in the region. Known for creating 
                 an atmosphere of worship and celebration, every performance is crafted to 
                 touch hearts and lift spirits.

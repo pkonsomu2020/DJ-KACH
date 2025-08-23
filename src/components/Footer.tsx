@@ -22,7 +22,7 @@ const Footer = () => {
       { name: 'Contact', path: '/contact' }
     ],
     contact: [
-      { icon: Phone, text: '+1 (555) 123-4567', href: 'tel:+15551234567' },
+      { icon: Phone, text: '(+254) 723 157-309', href: 'tel:+254723157309' },
       { icon: Mail, text: 'bookings@djkach.com', href: 'mailto:bookings@djkach.com' }
     ]
   };
@@ -45,13 +45,12 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Brand Section */}
             <div className="lg:col-span-1">
-              <Link to="/" className="flex items-center space-x-2 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center">
-                  <Music className="w-7 h-7 text-white" />
-                </div>
-                <span className="text-3xl font-bold">
-                  DJ <span className="text-red-500">KACH</span>
-                </span>
+              <Link to="/" className="flex items-center mb-6">
+                <img 
+                  src="/DJ KACH LOGO 1 - WHITE - TRANSPARENT.png" 
+                  alt="DJ Kach Logo" 
+                  className="w-20 h-20"
+                />
               </Link>
               <p className="text-gray-400 mb-6 leading-relaxed">
                 Bringing the joy of gospel music to every celebration. 

@@ -1,125 +1,134 @@
-import React, { useState } from 'react';
-import { X, Play, Image, Filter } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Play, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Gallery = () => {
-  const [selectedMedia, setSelectedMedia] = useState<any>(null);
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [playingVideos, setPlayingVideos] = useState<{ [key: number]: boolean }>({});
+  const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
 
-  const mediaItems = [
+  const galleryCategories = [
     {
-      type: 'image',
-      src: 'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800',
-      alt: 'DJ Kach performing at wedding',
-      title: 'Wedding Performance',
-      category: 'Weddings'
+      title: 'Corporate Events',
+      description: 'Professional corporate entertainment and business events',
+      image: 'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800',
+      count: 5,
+      path: '/gallery/corporate-events'
     },
     {
-      type: 'image',
-      src: 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=800',
-      alt: 'Gospel concert crowd',
-      title: 'Gospel Festival 2024',
-      category: 'Festivals'
+      title: 'Wedding Ceremonies',
+      description: 'Beautiful wedding celebrations and ceremonies',
+      image: 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=800',
+      count: 6,
+      path: '/gallery/wedding-ceremonies'
     },
     {
-      type: 'image', 
-      src: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=800',
-      alt: 'Church event setup',
-      title: 'Church Anniversary Setup',
-      category: 'Church Events'
+      title: 'School Functions',
+      description: 'Educational events and school celebrations',
+      image: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=800',
+      count: 0,
+      path: '/gallery/school-functions'
     },
     {
-      type: 'image',
-      src: 'https://images.pexels.com/photos/1779447/pexels-photo-1779447.jpeg?auto=compress&cs=tinysrgb&w=800',
-      alt: 'Wedding ceremony',
-      title: 'Ceremony Music',
-      category: 'Weddings'
+      title: 'Church Functions',
+      description: 'Religious gatherings and church events',
+      image: 'https://images.pexels.com/photos/1779447/pexels-photo-1779447.jpeg?auto=compress&cs=tinysrgb&w=800',
+      count: 0,
+      path: '/gallery/church-functions'
     },
     {
-      type: 'image',
-      src: 'https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=800',
-      alt: 'Sound equipment setup',
-      title: 'Professional Setup',
-      category: 'Corporate'
+      title: 'Birthday Parties',
+      description: 'Fun and energetic birthday celebrations',
+      image: 'https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=800',
+      count: 0,
+      path: '/gallery/birthday-parties'
     },
     {
-      type: 'image',
-      src: 'https://images.pexels.com/photos/1024248/pexels-photo-1024248.jpeg?auto=compress&cs=tinysrgb&w=800',
-      alt: 'Youth event',
-      title: 'Youth Conference',
-      category: 'Church Events'
+      title: 'Gospel Festivals',
+      description: 'Uplifting gospel music festivals and events',
+      image: 'https://images.pexels.com/photos/1024248/pexels-photo-1024248.jpeg?auto=compress&cs=tinysrgb&w=800',
+      count: 0,
+      path: '/gallery/gospel-festivals'
     },
     {
-      type: 'image',
-      src: 'https://images.pexels.com/photos/1375849/pexels-photo-1375849.jpeg?auto=compress&cs=tinysrgb&w=800',
-      alt: 'Corporate event',
-      title: 'Corporate Entertainment',
-      category: 'Corporate'
+      title: 'Youth Concerts',
+      description: 'Energetic youth events and concerts',
+      image: '/GALLERY/Youth Concerts/youth 1.jpg',
+      count: 14,
+      path: '/gallery/youth-concerts'
     },
     {
-      type: 'image',
-      src: 'https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=800',
-      alt: 'Outdoor festival',
-      title: 'Outdoor Gospel Festival',
-      category: 'Festivals'
+      title: 'Children Concerts',
+      description: 'Fun and engaging children events',
+      image: '/GALLERY/Children Concerts/children 1.jpg',
+      count: 3,
+      path: '/gallery/children-concerts'
     },
     {
-      type: 'image',
-      src: 'https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=800',
-      alt: 'DJ equipment close-up',
-      title: 'Professional Equipment',
-      category: 'Behind the Scenes'
-    },
-    {
-      type: 'image',
-      src: 'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800',
-      alt: 'DJ mixing live',
-      title: 'Live Mixing Session',
-      category: 'Behind the Scenes'
-    },
-    {
-      type: 'image',
-      src: 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=800',
-      alt: 'Crowd dancing',
-      title: 'Dance Floor Energy',
-      category: 'Weddings'
-    },
-    {
-      type: 'image',
-      src: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=800',
-      alt: 'Church worship',
-      title: 'Worship Atmosphere',
-      category: 'Church Events'
+      title: 'Pool Parties',
+      description: 'Exciting poolside celebrations and parties',
+      image: '/GALLERY/Pool Parties/pool 1.jpg',
+      count: 10,
+      path: '/gallery/pool-parties'
     }
   ];
-
-  const categories = ['All', 'Weddings', 'Church Events', 'Festivals', 'Corporate', 'Behind the Scenes'];
-
-  const filteredItems = activeCategory === 'All' 
-    ? mediaItems 
-    : mediaItems.filter(item => item.category === activeCategory);
 
   const videoHighlights = [
     {
       title: 'Wedding Highlight Reel',
       description: 'Best moments from recent weddings',
-      thumbnail: 'https://images.pexels.com/photos/1779447/pexels-photo-1779447.jpeg?auto=compress&cs=tinysrgb&w=800'
+      video: '/VIDEOS/Video 1.mp4',
+      thumbnail: '/VIDEOS/Video 1.mp4'
     },
     {
       title: 'Gospel Festival Performance',
       description: 'Live performance at Gospel Festival 2024',
-      thumbnail: 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=800'
+      video: '/VIDEOS/Video 2.mp4',
+      thumbnail: '/VIDEOS/Video 2.mp4'
     },
     {
-      title: 'Church Event Compilation',
-      description: 'Highlights from various church events',
-      thumbnail: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=800'
+      title: 'Corporate Event Compilation',
+      description: 'Highlights from various corporate events',
+      video: '/VIDEOS/Video 3.mp4',
+      thumbnail: '/VIDEOS/Video 3.mp4'
     },
     {
-      title: 'Behind the Scenes',
-      description: 'Setup and preparation process',
-      thumbnail: 'https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=800'
+      title: 'Youth Event Highlights',
+      description: 'Fun moments from youth events',
+      video: '/VIDEOS/Video 4.mp4',
+      thumbnail: '/VIDEOS/Video 4.mp4'
     }
   ];
+
+  const handleVideoClick = (index: number) => {
+    const video = videoRefs.current[index];
+    if (video) {
+      if (playingVideos[index]) {
+        video.pause();
+        setPlayingVideos(prev => ({ ...prev, [index]: false }));
+      } else {
+        // Pause all other videos first
+        Object.keys(videoRefs.current).forEach(key => {
+          const otherVideo = videoRefs.current[parseInt(key)];
+          if (otherVideo && parseInt(key) !== index) {
+            otherVideo.pause();
+          }
+        });
+        setPlayingVideos({ [index]: true });
+        video.play();
+      }
+    }
+  };
+
+  const handleVideoEnded = (index: number) => {
+    setPlayingVideos(prev => ({ ...prev, [index]: false }));
+  };
+
+  const handleVideoLoadedMetadata = (index: number) => {
+    const video = videoRefs.current[index];
+    if (video) {
+      video.currentTime = 0;
+    }
+  };
 
   return (
     <div className="pt-16 sm:pt-20 px-0 sm:px-4">
@@ -137,42 +146,41 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Photo Gallery */}
+      {/* Gallery Categories */}
       <section className="py-10 sm:py-20 bg-white">
         <div className="max-w-2xl sm:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Category Filter */}
-          <div className="flex flex-col md:flex-row justify-between items-center mb-8 sm:mb-12 gap-4">
-            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 md:mb-0">Photo Gallery</h2>
-            <div className="flex items-center space-x-2">
-              <Filter className="w-5 h-5 text-gray-600" />
-              <select
-                value={activeCategory}
-                onChange={(e) => setActiveCategory(e.target.value)}
-                className="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-red-500 focus:border-transparent"
-              >
-                {categories.map((category) => (
-                  <option key={category} value={category}>{category}</option>
-                ))}
-              </select>
-            </div>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Photo Gallery Categories</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Explore our collection of memorable moments from various events and celebrations
+            </p>
           </div>
 
-          {/* Media Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
-            {filteredItems.map((media, idx) => (
-              <div key={idx} className="rounded-2xl overflow-hidden shadow-lg bg-white flex flex-col">
-                <img
-                  src={media.src}
-                  alt={media.alt}
-                  className="w-full h-40 sm:h-56 object-cover"
-                />
-                <div className="p-3 sm:p-4 text-center flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-1">{media.title}</h3>
-                    <p className="text-xs sm:text-sm text-gray-600 mb-2">{media.alt}</p>
+          {/* Categories Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
+            {galleryCategories.map((category, index) => (
+              <Link
+                key={index}
+                to={category.path}
+                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 border"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={category.image}
+                    alt={category.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-xl font-bold text-white mb-1">{category.title}</h3>
+                    <p className="text-white/90 text-sm mb-2">{category.description}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-white/80 text-sm">{category.count} images</span>
+                      <ArrowRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform duration-200" />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -184,19 +192,25 @@ const Gallery = () => {
           <h2 className="text-4xl font-bold text-gray-900 text-center mb-12">Video Highlights</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {videoHighlights.map((video, index) => (
-              <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                <div className="aspect-w-16 aspect-h-9 relative h-48 overflow-hidden">
-                  <img
-                    src={video.thumbnail}
-                    alt={video.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <div className="aspect-w-16 aspect-h-9 relative h-48 overflow-hidden cursor-pointer" onClick={() => handleVideoClick(index)}>
+                  <video
+                    ref={el => videoRefs.current[index] = el}
+                    src={video.video}
+                    className="w-full h-full object-cover"
+                    preload="metadata"
+                    onEnded={() => handleVideoEnded(index)}
+                    onLoadedMetadata={() => handleVideoLoadedMetadata(index)}
+                    muted
+                    loop
                   />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-red-600 rounded-full p-4 group-hover:scale-110 transition-transform duration-300">
-                      <Play className="w-8 h-8 text-white ml-1" />
+                  {!playingVideos[index] && (
+                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                      <div className="bg-red-600 rounded-full p-4 group-hover:scale-110 transition-transform duration-300">
+                        <Play className="w-8 h-8 text-white ml-1" />
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">{video.title}</h3>
@@ -208,31 +222,6 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Lightbox Modal */}
-      {selectedMedia && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-          <div className="relative max-w-4xl max-h-full">
-            <button
-              onClick={() => setSelectedMedia(null)}
-              className="absolute -top-12 right-0 text-white hover:text-gray-300 z-10"
-            >
-              <X className="w-8 h-8" />
-            </button>
-            
-            <img
-              src={selectedMedia.src}
-              alt={selectedMedia.alt}
-              className="max-w-full max-h-[80vh] object-contain rounded-lg"
-            />
-            
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-6 rounded-b-lg">
-              <h3 className="text-xl font-semibold mb-2">{selectedMedia.title}</h3>
-              <p className="text-gray-300">{selectedMedia.category}</p>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-red-600 to-red-700">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -242,9 +231,12 @@ const Gallery = () => {
           <p className="text-xl text-red-100 mb-8">
             Book DJ Kach for your event and create memories worth capturing
           </p>
-          <button className="bg-white text-red-600 px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transform transition-all duration-200 shadow-lg">
+          <Link
+            to="/contact"
+            className="bg-white text-red-600 px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transform transition-all duration-200 shadow-lg inline-block"
+          >
             Book Your Event
-          </button>
+          </Link>
         </div>
       </section>
     </div>

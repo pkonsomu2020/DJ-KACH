@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Music, Mic, Settings, Users, Calendar, Camera, CheckCircle, Send } from 'lucide-react';
+import { Music, Mic, Settings, Users, Calendar, Camera, CheckCircle, Send, Radio, Tv } from 'lucide-react';
 import { apiService } from '../services/api';
 
 const Services = () => {
@@ -45,6 +45,13 @@ const Services = () => {
       description: 'Professional entertainment for corporate functions and business celebrations',
       features: ['Brand alignment', 'Professional atmosphere', 'Client networking', 'Custom experience'],
       color: 'from-gray-600 to-gray-800'
+    },
+    {
+      icon: Radio,
+      title: 'Media Services',
+      description: 'Professional TV and radio presenting services for media and broadcasting',
+      features: ['TV Presenter', 'Radio Presenter', 'Script preparation', 'Professional delivery'],
+      color: 'from-red-500 to-red-700'
     }
   ];
 

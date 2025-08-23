@@ -54,8 +54,14 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Phone',
-      info: '+1 (555) 123-4567',
-      link: 'tel:+15551234567'
+      info: '(+254) 723 157-309',
+      link: 'tel:+254723157309'
+    },
+    {
+      icon: Phone,
+      title: 'Phone',
+      info: '(+254) 780 157-309',
+      link: 'tel:+254780157309'
     },
     {
       icon: Mail,
@@ -65,8 +71,8 @@ const Contact = () => {
     },
     {
       icon: MapPin,
-      title: 'Service Area',
-      info: 'Greater Metro Area',
+      title: 'Dolphine Plaza',
+      info: 'Ongata Rongai',
       link: null
     },
     {

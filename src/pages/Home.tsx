@@ -1,40 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Pause, Volume2, Calendar, Music, ArrowRight, Star, Users, Award } from 'lucide-react';
+import { Calendar, Music, ArrowRight, Star, Users, Award } from 'lucide-react';
 
 const Home = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
   const stats = {
     events_played: 500,
     happy_clients: 1000,
-    years_experience: 8,
+    years_experience: 15,
     average_rating: 5.0
   };
 
-  const featuredServices = [
-    {
-      id: 1,
-      title: 'Wedding DJ Services',
-      description: 'Make your special day unforgettable with our professional wedding DJ services.',
-      image_url: 'https://images.pexels.com/photos/1779447/pexels-photo-1779447.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 2,
-      title: 'Church Events',
-      description: 'Uplifting gospel music for church services and religious gatherings.',
-      image_url: 'https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=800'
-    },
-    {
-      id: 3,
-      title: 'Corporate Events',
-      description: 'Professional entertainment for business functions and celebrations.',
-      image_url: 'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=800'
-    }
-  ];
-
   // Countdown logic for upcoming event
-  const eventDate = new Date('2025-10-07T14:00:00+03:00');
+  const eventDate = new Date('2025-08-23T14:00:00+03:00');
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   React.useEffect(() => {
@@ -59,10 +36,9 @@ const Home = () => {
 
   // Image slider state
   const sliderImages = [
-    '/slide_1.jpg',
-    '/slide_2.jpg',
-    '/slide_3.jpg',
-    '/slide_4.jpg',
+    '/Slides/slide 1.jpg',
+    '/Slides/slide 2.jpg',
+    '/Slides/slide 3.jpg',
   ];
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -149,10 +125,11 @@ const Home = () => {
           {/* Left: Event Details */}
           <div className="flex-1 flex flex-col items-center justify-center text-center bg-gradient-to-br from-red-500 to-red-700 rounded-2xl p-6 sm:p-10 text-white w-full">
             <div className="uppercase text-xs sm:text-sm tracking-widest mb-1 sm:mb-2">Upcoming Event</div>
-            <div className="text-2xl sm:text-4xl font-extrabold mb-2 sm:mb-4">HOUR OF WORSHIP</div>
-            <div className="text-lg sm:text-2xl font-semibold mb-1">October 7th 2025</div>
-            <div className="text-lg sm:text-2xl font-semibold mb-1">2PM - 7PM</div>
-            <div className="mb-4 sm:mb-8 text-base sm:text-lg">Venue: SEE LIGHT INTERNATIONAL MINISTRIES</div>
+            <div className="text-2xl sm:text-4xl font-extrabold mb-2 sm:mb-4">JIKUBALI AFRIFEST</div>
+            <div className="text-lg sm:text-2xl font-semibold mb-1">2nd Edition – Nairobi</div>
+            <div className="text-lg sm:text-2xl font-semibold mb-1">August 23rd 2025</div>
+            <div className="mb-4 sm:mb-8 text-base sm:text-lg">Venue: FOCUS CENTER, KASARANI</div>
+            <div className="mb-4 sm:mb-8 text-base sm:text-lg">Theme: Celebrating African Strength, Style and Spirit</div>
             <button className="bg-white text-red-600 font-bold px-6 sm:px-8 py-2 sm:py-3 rounded shadow hover:bg-gray-100 mb-6 sm:mb-10 transition-colors duration-200 text-base sm:text-lg">Join Now</button>
             <div className="flex gap-4 sm:gap-8 justify-center items-center mt-2">
               <div className="flex flex-col items-center">
@@ -176,9 +153,9 @@ const Home = () => {
           {/* Right: Poster */}
           <div className="flex-1 flex justify-center items-center w-full">
             <img
-              src="/hour_of_worship poster.jpg"
-              alt="Hour of Worship Poster"
-              className="rounded-2xl shadow-lg w-full max-w-xs sm:max-w-md h-40 sm:h-72 object-cover"
+              src="/EVENTS/Jikubali Afrifest_Poster.jpg"
+              alt="Jikubali Afrifest Poster"
+              className="rounded-2xl shadow-lg w-full max-w-xs sm:max-w-md object-contain"
               style={{ display: 'block' }}
             />
           </div>
@@ -234,30 +211,69 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
-            {featuredServices.map((service) => (
-              <div
-                key={service.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border flex flex-col h-full"
-              >
-                <div className="h-40 sm:h-48 overflow-hidden">
-                  <img
-                    src={service.image_url}
-                    alt={service.title}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-4 sm:p-6 flex flex-col flex-1">
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{service.title}</h3>
-                  <p className="text-gray-600 mb-2 sm:mb-4 flex-1">{service.description}</p>
-                  <Link
-                    to="/services"
-                    className="text-red-600 font-semibold hover:text-red-700 inline-flex items-center mt-auto"
-                  >
-                    Learn More <ArrowRight className="w-4 h-4 ml-1" />
-                  </Link>
-                </div>
+            <div
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border flex flex-col h-full"
+            >
+              <div className="h-40 sm:h-48 overflow-hidden">
+                <img
+                  src="https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="African Festival DJ"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                />
               </div>
-            ))}
+              <div className="p-4 sm:p-6 flex flex-col flex-1">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Gospel DJ Services</h3>
+                <p className="text-gray-600 mb-2 sm:mb-4 flex-1">Professional gospel music mixing for all types of events and celebrations.</p>
+                <Link
+                  to="/services"
+                  className="text-red-600 font-semibold hover:text-red-700 inline-flex items-center mt-auto"
+                >
+                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+            <div
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border flex flex-col h-full"
+            >
+              <div className="h-40 sm:h-48 overflow-hidden">
+                <img
+                  src="https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Radio Broadcasting"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-4 sm:p-6 flex flex-col flex-1">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Wedding Ceremonies</h3>
+                <p className="text-gray-600 mb-2 sm:mb-4 flex-1">Special wedding packages with processional, ceremony, and reception music</p>
+                <Link
+                  to="/services"
+                  className="text-red-600 font-semibold hover:text-red-700 inline-flex items-center mt-auto"
+                >
+                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+            <div
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border flex flex-col h-full"
+            >
+              <div className="h-40 sm:h-48 overflow-hidden">
+                <img
+                  src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Album Launch Events"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-4 sm:p-6 flex flex-col flex-1">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Corporate Events</h3>
+                <p className="text-gray-600 mb-2 sm:mb-4 flex-1">Professional entertainment for corporate functions and business celebrations</p>
+                <Link
+                  to="/services"
+                  className="text-red-600 font-semibold hover:text-red-700 inline-flex items-center mt-auto"
+                >
+                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
           </div>
 
           <div className="text-center">

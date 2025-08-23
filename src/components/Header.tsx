@@ -32,13 +32,12 @@ const Header = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-700 rounded-full flex items-center justify-center">
-              <Music className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-2xl font-bold text-gray-900">
-              DJ <span className="text-red-600">KACH</span>
-            </span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/DJ KACH LOGO 1 - WHITE - TRANSPARENT.png" 
+              alt="DJ Kach Logo" 
+              className="w-16 h-16 sm:w-20 sm:h-20"
+            />
           </Link>
 
           {/* Desktop Navigation */}
